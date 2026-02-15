@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz San Valentín 💖</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Segoe UI', sans-serif;
+    overflow:hidden;
+}
+
+.contenedor{
+    text-align:center;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation: aparecer 1.5s ease-in-out;
+    position:relative;
+    z-index:10;
+    max-width:600px;
+}
+
+h1{ color:#ff4d6d; }
+
+p{
+    font-size:18px;
+    color:#444;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#c9184a;
+}
+
+.corazon{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation: flotar 5s linear infinite;
+}
+
+@keyframes flotar{
+    0%{transform:translateY(100vh); opacity:1;}
+    100%{transform:translateY(-10vh); opacity:0;}
+}
+
+/* 🔥 IMÁGENES SUBIENDO EN UN SOLO SENTIDO */
+.snoopy{
+    position:absolute;
+    width:120px;
+    bottom:-150px;
+    animation: subirImagen 10s linear infinite;
+}
+
+@keyframes subirImagen{
+    0%{
+        transform: translateY(0);
+        opacity:1;
+    }
+    100%{
+        transform: translateY(-120vh);
+        opacity:0;
+    }
+}
+
+/* PRIMERA HILERA */
+.fila1-pos1{ left:5%; animation-delay:0s; }
+.fila1-pos2{ left:25%; animation-delay:2s; }
+.fila1-pos3{ left:45%; animation-delay:4s; }
+.fila1-pos4{ left:65%; animation-delay:6s; }
+
+/* SEGUNDA HILERA */
+.fila2-pos1{ left:15%; animation-delay:1s; }
+.fila2-pos2{ left:35%; animation-delay:3s; }
+.fila2-pos3{ left:55%; animation-delay:5s; }
+.fila2-pos4{ left:75%; animation-delay:7s; }
+
+</style>
+</head>
+
+<body>
+
+<!-- Primera hilera -->
+<img src="imagen1.png" class="snoopy fila1-pos1">
+<img src="imagen2.png" class="snoopy fila1-pos2">
+<img src="imagen3.png" class="snoopy fila1-pos3">
+<img src="imagen4.png" class="snoopy fila1-pos4">
+
+<!-- Segunda hilera (puedes cambiar las imágenes) -->
+<img src="imagen5.png" class="snoopy fila2-pos1">
+<img src="imagen6.png" class="snoopy fila2-pos2">
+<img src="imagen7.png" class="snoopy fila2-pos3">
+<img src="imagen8.png" class="snoopy fila2-pos4">
+<img src="imagen9.png" class="snoopy fila2-pos5">
+
+<div class="contenedor">
+<h1 id="titulo">💖 Feliz Día de San Valentín 💖</h1>
+<p id="mensaje">Tengo algo muy especial para ti…</p>
+<button id="btn" onclick="mostrarCarta()">Abrir 💌</button>
+<button id="reinicio" onclick="reiniciar()" style="display:none;">🔁 Volver al inicio</button>
+</div>
+
+<script>
+
+let contador = 0;
+
+function mostrarCarta(){
+document.getElementById("titulo").innerHTML =
+"💌 Hola! Devany este mensaje es para ti 💌";
+
+document.getElementById("mensaje").innerHTML = `
+Espero que haya llegado este mensaje a la persona correcta,  
+recibe este mensaje con mucho cariño,  
+todas estas palabras te las digo de corazón 💖  
+
+Me encanta tu forma de ser,  
+tu sonrisa tiene algo que alegra el día.  
+
+Y aunque a veces me tarde en contestar 😅  
+eso no cambia el cariño tan bonito que te tengo.
+`;
+
+let btn = document.getElementById("btn");
+btn.innerHTML="👑 Primera sorpresa";
+btn.onclick = poema1;
+}
+
+function poema1(){
+document.getElementById("mensaje").innerHTML = `
+👑 Primera sorpresa 👑 <br><br>
+Si el mundo fuera un cuento, <br>
+tú serías la parte más bonita. <br><br>
+Tu risa tiene magia, <br>
+tu mirada tranquilidad, <br>
+y tu forma de ser… especialita 💖
+`;
+
+let btn = document.getElementById("btn");
+btn.innerHTML="👑 Segunda sorpresa";
+btn.onclick = poema2;
+}
+
+function poema2(){
+document.getElementById("mensaje").innerHTML = `
+👑 Para la mejor princesa de Disney 👑 <br><br>
+No necesitas castillo ni corona, <br>
+porque tu sonrisa ya ilumina todo alrededor. <br><br>
+Tienes magia en tu mirada, <br>
+dulzura en tu corazón, <br>
+y una luz tan bonita <br>
+que cualquiera se enamora de tu interior. <br><br>
+Si las princesas existieran en este mundo… <br>
+definitivamente serías tú 💖
+`;
+
+let btn = document.getElementById("btn");
+btn.innerHTML="🎮 Tecer regalo";
+btn.onclick = iniciarJuego;
+}
+
+function iniciarJuego(){
+document.getElementById("mensaje").innerHTML = `
+😏 Último reto... <br><br>
+Dale clics al botón para descubrir el regalo final 💕
+`;
+
+let btn = document.getElementById("btn");
+btn.innerHTML="Ultima sorpresa del dia 💘";
+btn.style.position="absolute";
+btn.onclick = mover;
+}
+
+function mover(){
+contador++;
+
+let btn = document.getElementById("btn");
+
+btn.style.left = Math.random()*400 - 200 + "px";
+btn.style.top = Math.random()*200 - 100 + "px";
+
+if(contador >= 5){
+document.getElementById("mensaje").innerHTML = `
+💖 Vales mucho Devany 💖 <br><br>
+Te quiero y te adoro tal como eres. <br>
+No cambies nunca tu forma tan bonita de ser. <br><br>
+Gracias por existir en mi vida ✨
+`;
+
+btn.style.display="none";
+document.getElementById("reinicio").style.display="inline-block";
+}
+}
+
+function reiniciar(){
+contador = 0;
+
+document.getElementById("titulo").innerHTML =
+"💖 Feliz Día de San Valentín 💖";
+
+document.getElementById("mensaje").innerHTML =
+"Tengo algo muy especial para ti…";
+
+let btn = document.getElementById("btn");
+btn.style.display="inline-block";
+btn.style.position="static";
+btn.innerHTML="Abrir 💌";
+btn.onclick = mostrarCarta;
+
+document.getElementById("reinicio").style.display="none";
+}
+
+function crearCorazon(){
+const corazon = document.createElement("div");
+corazon.classList.add("corazon");
+corazon.innerHTML = "💖";
+corazon.style.left = Math.random()*100 + "vw";
+document.body.appendChild(corazon);
+
+setTimeout(()=>{ corazon.remove(); },5000);
+}
+
+setInterval(crearCorazon,300);
+
+</script>
+
+</body>
+</html>
